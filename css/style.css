@@ -65,7 +65,7 @@ nav .container {
 .hero {
     background: url('../images/hero-bg.jpg');
     background-size: cover;
-    background-position: top;
+    background-position: 50% 30%;
     color: #fff;
     text-align: center;
     padding: 10rem 0;
