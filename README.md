@@ -1,6 +1,6 @@
 # San Francisco Balalaika Ensemble Website
 
-A simple static website for the San Francisco Balalaika Ensemble featuring a clean red and white color theme.
+A simple static website for the San Francisco Balalaika Ensemble.
 
 I chose to use a simple static site without a framework to make this maximally easy to deploy and have as much longevity as possible.
 
@@ -12,10 +12,11 @@ I chose to use a simple static site without a framework to make this maximally e
 ├── css/
 │   └── style.css      # Stylesheet (red & white theme)
 ├── js/
-│   └── script.js      # JavaScript functionality
-├── images/            # Directory for photos and images
+│   └── script.js      # JavaScript functionality & slideshow config
+├── images/
+│   ├── slideshow/     # Slideshow photos (auto-rotating carousel)
 │   ├── icons/         # Favicon and icons
-│   └── README.md      # Image guidelines
+│   └── logo.jpg       # Header logo
 └── README.md          # This file
 ```
 
@@ -48,24 +49,40 @@ npx http-server -p 8000
 
 ## Features
 
+- **Auto-rotating slideshow** with blurred backgrounds for mixed aspect ratios
 - Responsive design that works on desktop and mobile
 - Smooth scrolling navigation
-- Clean red and white color theme
-- Image placeholders ready for photos and icons
-- Photo gallery grid layout
+- Clean red and white color theme (crimson #dc143c)
+- CSS scroll-snap carousel with 5-second intervals
 - Modern, professional design
 - Easy to customize and extend
 
-## Adding Images
+## Adding Photos to the Slideshow
 
-1. Place your images in the `images/` directory
-2. Add icons (favicon, etc.) to `images/icons/`
-3. Uncomment the image sections in `index.html`:
-   - Logo in navigation
-   - Hero background image
-   - About section photo
-   - Performance gallery images
-4. See `images/README.md` for recommended image sizes
+The hero slideshow automatically displays all images configured in `js/script.js`. To add new photos:
+
+### Step 1: Add Image Files
+Place your image files in the `images/slideshow/` directory. Supported formats: JPG, PNG, WebP.
+
+### Step 2: Update the Configuration
+Open `js/script.js` and find the `SLIDESHOW_CONFIG` object. Add your new images to the `images` array:
+
+```javascript
+const SLIDESHOW_CONFIG = {
+  images: [
+    "hero-bg.jpg",
+    "Balalaika_935d.jpg",
+    "Balalaika_944c.jpg",
+    // ... existing images ...
+    "your-new-image.jpg"  // Add your new image filename here
+  ],
+  folderPath: "images/slideshow/",
+  intervalMs: 5000
+};
+```
+
+### Step 3: Save and Test
+Save the file and refresh your browser. Your new image will automatically appear in the rotation.
 
 ## Customization
 
